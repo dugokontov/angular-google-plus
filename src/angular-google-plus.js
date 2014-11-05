@@ -111,10 +111,10 @@ angular.module('googleplus', []).
       NgGooglePlus.prototype.handleAuthResult = function(authResult) {
           if (authResult && !authResult.error) {
             deferred.resolve(authResult);
-            $rootScope.$apply();
           } else {
-            deferred.reject('error');
+            deferred.reject(authResult.error);
           }
+          $rootScope.$apply();
       };
 
       NgGooglePlus.prototype.getUser = function() {

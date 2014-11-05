@@ -1,4 +1,4 @@
-/*! angular-google-plus - v0.1.1 2014-04-27 */
+/*! angular-google-plus - v0.1.2 2014-11-05 */
 /**
  * Options object available for module
  * options/services definition.
@@ -90,10 +90,10 @@ angular.module("googleplus", []).provider("GooglePlus", [ function() {
         e.prototype.handleAuthResult = function(a) {
             if (a && !a.error) {
                 d.resolve(a);
-                b.$apply();
             } else {
-                d.reject("error");
+                d.reject(a.error);
             }
+            b.$apply();
         };
         e.prototype.getUser = function() {
             var c = a.defer();
