@@ -90,10 +90,10 @@ angular.module('googleplus', []).
     this.$get = ['$q', '$rootScope', '$timeout', function($q, $rootScope, $timeout) {
 
       /**
-       * Create a deferred instance to implement asynchronous calls
+       * Define a deferred instance that will implement asynchronous calls
        * @type {Object}
        */
-      var deferred  = $q.defer();
+      var deferred;
 
       /**
        * NgGooglePlus Class
@@ -102,6 +102,7 @@ angular.module('googleplus', []).
       var NgGooglePlus = function () {};
 
       NgGooglePlus.prototype.login =  function () {
+        deferred  = $q.defer();
         gapi.auth.authorize({
           client_id: options.clientId,
           scope: options.scopes,
